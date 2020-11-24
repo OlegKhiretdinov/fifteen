@@ -1,0 +1,164 @@
+body {
+  padding: 0;
+  color: black;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: orange;
+  text-align: center;
+}
+
+main {
+  width: 420px;
+  margin: 10px auto;
+  position: relative;
+  
+  & a, & p {
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  background: white;
+  z-index: 20;
+  transition: all .5s;
+}
+
+.show-nav {
+  bottom: 0;
+}
+
+.info {
+  @extend nav;
+  z-index: 30;
+
+  &__content {
+    width: 100%;
+    overflow: auto;
+  }
+}
+
+.show-info {
+  bottom: 0;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  
+  & tr:nth-child(odd) {
+    background: #fbf6ed;
+  }
+
+  & tr:hover {
+    background: #e8e1d4;
+    cursor: default;
+  }
+
+  & tr.table-head {
+    background: #e2dfdf;
+  }
+  
+  & td {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+.save-table {
+  @extend .result-table;
+
+  & tr:hover {
+    cursor: pointer;
+  }
+
+  & tr.table-head {
+    cursor: default;
+  }
+}
+
+select {
+  margin-left: 10px;
+}
+
+.counters {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 5px;
+}
+
+.game-wraper {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  margin: 0 auto;
+}
+
+.game-field {
+  width: 100%;
+  height: 100%;
+  background: gray;
+  table-layout: fixed;
+  border-spacing: 0;
+}
+
+.chip {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: white;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  border-radius: 5px;
+  user-select: none;
+  transition: all .2s;
+}
+
+.empty {
+  @extend .chip;
+  background: transparent;
+}
+
+.win-message {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  background: rgba(21, 20, 20, 0.4);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+@media all and (max-width: 450px) {
+  main {
+    width: 320px;
+  }
+
+  .game-wraper {
+    width: 320px;
+    height: 320px;
+  }
+}
